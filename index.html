@@ -2,27 +2,114 @@
 <html lang="en" data-theme="light">
 
 <head>
+  <!-- 1. Core Meta Tags -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Divya R - Premium Personal Portfolio. Frontend Developer specializing in clean, modern, and interactive web experiences.">
-  <title>Divya R | Personal Portfolio & Web Developer</title>
+    content="Divya R is a Frontend Developer and B.Tech Information Technology student at Adhiparasakthi Engineering College, Tamil Nadu, India. Explore her developer portfolio featuring responsive web applications, modern UI/UX redesigns, and clean HTML/CSS/JavaScript implementations.">
+  <meta name="keywords"
+    content="Divya R, Divya R Portfolio, Divya R Frontend Developer, Frontend Developer Portfolio, Web Developer Portfolio, React Developer Portfolio, HTML CSS JavaScript Developer, B.Tech IT Portfolio, Adhiparasakthi Engineering College Student, Web Developer Tamil Nadu, Frontend Developer India">
+  <meta name="author" content="Divya R">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#4F46E5">
+  <link rel="canonical" href="https://divyaharina.github.io/Divya-Portfolio/">
 
-  <!-- CSS Stylesheet -->
+  <title>Divya R | Frontend Developer & Web Developer Portfolio</title>
+
+  <!-- 2. Security Meta Tags -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://divyaharina.github.io; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com; upgrade-insecure-requests;">
+
+  <!-- 3. Open Graph / Facebook / LinkedIn / WhatsApp Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://divyaharina.github.io/Divya-Portfolio/">
+  <meta property="og:title" content="Divya R | Frontend Developer & Web Developer Portfolio">
+  <meta property="og:description"
+    content="Explore the professional portfolio of Divya R, a B.Tech IT student & Frontend Developer specializing in responsive design, UI/UX optimization, and web application development.">
+  <meta property="og:image" content="https://divyaharina.github.io/Divya-Portfolio/assets/image.png">
+  <meta property="og:site_name" content="Divya R Portfolio">
+
+  <!-- 4. Twitter Cards (X Preview) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://divyaharina.github.io/Divya-Portfolio/">
+  <meta name="twitter:title" content="Divya R | Frontend Developer & Web Developer Portfolio">
+  <meta name="twitter:description"
+    content="Explore the professional portfolio of Divya R, a B.Tech IT student & Frontend Developer specializing in responsive design, UI/UX optimization, and web application development.">
+  <meta name="twitter:image" content="https://divyaharina.github.io/Divya-Portfolio/assets/image.png">
+
+  <!-- 5. Favicon & Progressive Web App (PWA) Support -->
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" href="./favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+  <link rel="manifest" href="./manifest.webmanifest">
+
+  <!-- 6. Preload Critical Styles & Google Fonts (Performance Optimization) -->
+  <link rel="preload" href="style.css" as="style">
   <link rel="stylesheet" href="style.css">
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
+  <link rel="preload"
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
+    as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap">
+  </noscript>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="./favicon.png">
+  <!-- 7. JSON-LD Structured Data Schema (Search Engine Optimization) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Divya R",
+    "jobTitle": "Frontend Developer",
+    "email": "divyaharina267@gmail.com",
+    "url": "https://divyaharina.github.io/Divya-Portfolio/",
+    "image": "https://divyaharina.github.io/Divya-Portfolio/assets/image.png",
+    "nationality": "Indian",
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "Adhiparasakthi Engineering College",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Melmaruvathur",
+        "addressRegion": "Tamil Nadu",
+        "addressCountry": "India"
+      }
+    },
+    "sameAs": [
+      "https://github.com/DIVYAHARINA",
+      "https://www.linkedin.com/in/divya2607/"
+    ],
+    "knowsAbout": [
+      "Frontend Development",
+      "Web Development",
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "React.js",
+      "Responsive Web Design",
+      "Git",
+      "GitHub"
+    ]
+  }
+  </script>
+
+  <!-- 8. Google Search Console Verification -->
+  <meta name="google-site-verification" content="YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE_HERE" />
+
+  <!-- 9. Google Analytics (GA4) Integration -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
 </head>
 
 <body>
@@ -60,6 +147,7 @@
           <li><a href="#skills" class="nav-link">Skills</a></li>
           <li><a href="#experience" class="nav-link">Experience</a></li>
           <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#achievements" class="nav-link">Achievements</a></li>
           <li><a href="#certificates" class="nav-link">Certificates</a></li>
           <li><a href="#github" class="nav-link">GitHub</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -124,7 +212,7 @@
             <div class="avatar-border-gradient"></div>
             <div class="avatar-inner">
               <!-- Divya R's Profile Photo -->
-              <img src="assets/image.png" alt="Divya R" style="width: 100%; height: 100%; object-fit: cover;">
+              <img src="assets/image.png" alt="Divya R - Frontend Developer Portfolio Photo" width="320" height="320" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
           </div>
         </div>
@@ -165,7 +253,7 @@
           <div class="glass-card about-pic-card" style="text-align: center;">
             <div class="about-pic-inner"
               style="overflow: hidden; border-radius: 50%; width: 140px; height: 140px; margin: 0 auto 1.5rem; border: 3px solid var(--primary); display: flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.03);">
-              <img src="assets/image.png" alt="Divya R" style="width: 100%; height: 100%; object-fit: cover;">
+              <img src="assets/image.png" alt="Divya R - B.Tech IT Student & Frontend Developer" width="140" height="140" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
             <h3>Divya R</h3>
             <p>Frontend Developer & IT Engineer</p>
@@ -215,12 +303,12 @@
             <p class="tab-text">
               Hello! I'm <strong class="about-highlight">Divya R</strong>, currently pursuing my Bachelor of Technology
               in Information Technology at Adhiparasakthi Engineering College (Batch 2023–2027). I specialize in
-              developing responsive frontend frameworks and creating clean, scalable code.
+              developing responsive frontend interfaces and creating clean, scalable code.
             </p>
             <p class="tab-text">
-              My core drive is crafting user-friendly spaces on the internet. I've designed interactive interfaces
-              ranging from custom weather tools to advanced 3D simulations utilizing graphics packages like Three.js.
-              I'm dedicated to turning logical requirements into engaging, performant web applications.
+              I have successfully completed a Web Developer Internship at InnoByte Services, where I gained practical experience
+              in building responsive web applications, wireframing modern UI layouts, and optimizing frontend performance. 
+              I am dedicated to turning logical requirements into engaging, performant web solutions.
             </p>
           </div>
 
@@ -280,7 +368,7 @@
         <div class="skills-search-wrapper">
           <i class="fa-solid fa-magnifying-glass skills-search-icon"></i>
           <input type="text" id="skillsSearch" class="skills-search-input"
-            placeholder="Search skills (e.g. React, Java, Git)...">
+            placeholder="Search skills (e.g. React, Java, Git)..." aria-label="Search skills" autocomplete="off">
         </div>
 
         <div class="skills-tabs">
@@ -548,6 +636,72 @@
       <div class="timeline-container reveal">
         <div class="timeline-line"></div>
 
+        <!-- InnoByte Services -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content-wrap">
+            <div class="glass-card timeline-card">
+              <div class="timeline-header">
+                <span class="timeline-role">Web Developer Intern</span>
+                <span class="timeline-company">InnoByte Services (Remote)</span>
+                <span class="timeline-duration"><i class="fa-solid fa-calendar-days"></i> 15th June, 2026 - 15th July, 2026</span>
+              </div>
+              <p class="timeline-desc">
+                Spearheaded the UI/UX redesign and frontend development of the King Sukh Guest House website to enhance design aesthetics, responsiveness, and customer acquisition.
+              </p>
+              <ul class="timeline-achievements">
+                <li><i class="fa-solid fa-circle-check"></i> <strong>Responsibilities:</strong> Conducted comprehensive layout audits, developed structural wireframes, and implemented mobile-first responsive web pages.</li>
+                <li><i class="fa-solid fa-circle-check"></i> <strong>Key Contributions:</strong> Re-engineered the amenities catalog showcase, navigation dashboard, and reservation query pathway with CSS grid layouts and smooth micro-interactions.</li>
+                <li><i class="fa-solid fa-circle-check"></i> <strong>Skills Gained:</strong> Layout Wireframing, Responsive Design, Interactive DOM manipulation, Performance optimization, Cross-device debugging.</li>
+                <li><i class="fa-solid fa-circle-check"></i> <strong>Impact:</strong> Delivered a fully responsive web application on a strict 25-day delivery timeline to improve overall user engagement.</li>
+                <li><i class="fa-solid fa-circle-check"></i> <strong>Technologies:</strong> HTML5, CSS3, JavaScript, Git & GitHub.</li>
+              </ul>
+              
+              <!-- Micro Internship Progress Timeline -->
+              <div class="internship-micro-timeline-title">
+                <i class="fa-solid fa-diagram-project"></i> Project Development Phases
+              </div>
+              <div class="internship-micro-timeline">
+                <div class="micro-timeline-step">
+                  <div class="micro-step-dot"></div>
+                  <div class="micro-step-content">
+                    <span class="micro-step-title">Internship Started</span>
+                    <span class="micro-step-desc">June 15, 2026 • Commenced Web Developer Intern role.</span>
+                  </div>
+                </div>
+                <div class="micro-timeline-step">
+                  <div class="micro-step-dot"></div>
+                  <div class="micro-step-content">
+                    <span class="micro-step-title">Tasks & Setup</span>
+                    <span class="micro-step-desc">June 15 - June 17, 2026 • Audited website assets & mapped design layouts.</span>
+                  </div>
+                </div>
+                <div class="micro-timeline-step">
+                  <div class="micro-step-dot"></div>
+                  <div class="micro-step-content">
+                    <span class="micro-step-title">Project Development</span>
+                    <span class="micro-step-desc">June 18 - July 4, 2026 • Coded layout systems & interactive transitions.</span>
+                  </div>
+                </div>
+                <div class="micro-timeline-step">
+                  <div class="micro-step-dot"></div>
+                  <div class="micro-step-content">
+                    <span class="micro-step-title">Internship Completed</span>
+                    <span class="micro-step-desc">July 5 - July 15, 2026 • Performed cross-device testing and performance tuning.</span>
+                  </div>
+                </div>
+                <div class="micro-timeline-step">
+                  <div class="micro-step-dot"></div>
+                  <div class="micro-step-content">
+                    <span class="micro-step-title">Certificate Received</span>
+                    <span class="micro-step-desc">July 15, 2026 • Successfully submitted final project deliverables and received certificate.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Willo Web Studio -->
         <div class="timeline-item">
           <div class="timeline-dot"></div>
@@ -556,7 +710,7 @@
               <div class="timeline-header">
                 <span class="timeline-role">Web Development Intern</span>
                 <span class="timeline-company">Willo Web Studio (Remote)</span>
-                <span class="timeline-duration"><i class="fa-solid fa-calendar-days"></i> July 2025 - Present</span>
+                <span class="timeline-duration"><i class="fa-solid fa-calendar-days"></i> July 2026 - Present</span>
               </div>
               <p class="timeline-desc">
                 Collaborated with core engineering teams to prototype and build high-quality user-facing elements.
@@ -672,9 +826,9 @@
 
             <div class="project-links">
               <a href="https://github.com/DIVYAHARINA/weather-project.git" target="_blank"
-                class="btn btn-secondary project-btn"><i class="fa-brands fa-github"></i> Code</a>
+                class="btn btn-secondary project-btn" aria-label="View Weather App source code on GitHub"><i class="fa-brands fa-github"></i> Code</a>
               <a href="https://divyaharina.github.io/weather-project/" target="_blank"
-                class="btn btn-primary project-btn"><i class="fa-solid fa-globe"></i> Live</a>
+                class="btn btn-primary project-btn" aria-label="View Weather App live web application"><i class="fa-solid fa-globe"></i> Live</a>
             </div>
           </div>
         </div>
@@ -728,15 +882,15 @@
             </div>
 
             <div class="project-links">
-              <a href="https://github.com/DIVYAHARINA" target="_blank" class="btn btn-secondary project-btn"><i
+              <a href="https://github.com/DIVYAHARINA" target="_blank" class="btn btn-secondary project-btn" aria-label="View 3D Solar System source code on GitHub"><i
                   class="fa-brands fa-github"></i> Code</a>
               <a href="https://divyaharina.github.io/3D-solar-project/" target="_blank"
-                class="btn btn-primary project-btn"><i class="fa-solid fa-globe"></i> Live</a>
+                class="btn btn-primary project-btn" aria-label="View 3D Solar System live web application"><i class="fa-solid fa-globe"></i> Live</a>
             </div>
           </div>
         </div>
 
-        <!-- Project 4: King Sukh Guest House -->
+        <!-- Project 4: King Sukh Guest House Redesign -->
         <div class="glass-card project-card-wrap" data-categories="frontend">
           <div class="project-img-container">
             <div class="project-graphic">
@@ -749,45 +903,61 @@
           </div>
           <div class="project-body">
             <div class="project-title-meta">
-              <h3>King Sukh Guest House</h3>
-              <span class="project-badge">Landing Page</span>
+              <h3>King Sukh Guest House Redesign</h3>
+              <span class="project-badge">Internship Project</span>
             </div>
-            <p class="project-desc-short">A premium responsive portal for luxury hospitality, showcasing bookings and
-              amenities.</p>
+            <p class="project-desc-short">Redesigned the guest house landing page to enhance layout design and ensure full mobile responsiveness.</p>
             <div class="project-tech-tags">
               <span class="tech-tag">HTML5</span>
               <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">JavaScript</span>
               <span class="tech-tag">Grid & Flexbox</span>
+              <span class="tech-tag">Git</span>
             </div>
 
             <button class="case-study-trigger">Case Study Details <i class="fa-solid fa-chevron-down"></i></button>
             <div class="case-study-panel">
               <div class="case-study-inner">
                 <div class="case-sec">
-                  <h4>Problem</h4>
-                  <p>Small-scale resorts lose prospective bookings due to slow, outdated online listing sites.</p>
+                  <h4>Overview</h4>
+                  <p>Redesigned the hotel landing page website to achieve responsive layouts, modern aesthetics, and improved user experience.</p>
+                </div>
+                <div class="case-sec">
+                  <h4>Problem Statement</h4>
+                  <p>Outdated online presence, lack of mobile responsiveness, and slow loading times causing potential booking losses.</p>
                 </div>
                 <div class="case-sec">
                   <h4>Solution</h4>
-                  <p>Engineered an conversion-focused landing interface utilizing grid systems, lazy-loaded visual
-                    feeds, and contact forms.</p>
+                  <p>Engineered a visually appealing, fully responsive website utilizing grid and flexbox design patterns and performance optimization.</p>
                 </div>
                 <div class="case-sec">
                   <h4>Features</h4>
                   <ul>
                     <li>Dynamic image carousel galleries</li>
                     <li>Sleek amenities dashboard layout</li>
-                    <li>Validated inquiry pathways</li>
+                    <li>Validated inquiry forms and responsive navigation</li>
                   </ul>
+                </div>
+                <div class="case-sec">
+                  <h4>Responsibilities</h4>
+                  <p>Analysis of layout, wireframing design concepts, frontend implementation, cross-device testing, performance optimization, and project documentation.</p>
+                </div>
+                <div class="case-sec">
+                  <h4>Challenges Faced</h4>
+                  <p>Ensuring layout and design consistency across a wide range of mobile and desktop viewport sizes while maintaining the guest house's branding.</p>
+                </div>
+                <div class="case-sec">
+                  <h4>Outcome</h4>
+                  <p>Completed the redesign within the 25-day timeline, delivering a highly functional, responsive, and recruiter-friendly web application.</p>
                 </div>
               </div>
             </div>
 
             <div class="project-links">
               <a href="https://github.com/DIVYAHARINA/KingSukh-GuestHouse-Redesign.git" target="_blank"
-                class="btn btn-secondary project-btn"><i class="fa-brands fa-github"></i> Code</a>
-              <a href="https://divyaharina.github.io/Divya-Portfolio/" target="_blank"
-                class="btn btn-primary project-btn"><i class="fa-solid fa-globe"></i> Live</a>
+                class="btn btn-secondary project-btn" aria-label="View King Sukh Guest House Redesign source code on GitHub"><i class="fa-brands fa-github"></i> Code</a>
+              <a href="https://divyaharina.github.io/KingSukh-GuestHouse-Redesign/" target="_blank"
+                class="btn btn-primary project-btn" aria-label="View King Sukh Guest House Redesign live website"><i class="fa-solid fa-globe"></i> Live</a>
             </div>
           </div>
         </div>
@@ -841,7 +1011,7 @@
             </div>
 
             <div class="project-links">
-              <a href="https://github.com/DIVYAHARINA" target="_blank" class="btn btn-secondary project-btn"><i
+              <a href="https://github.com/DIVYAHARINA" target="_blank" class="btn btn-secondary project-btn" aria-label="View Library Management System source code on GitHub"><i
                   class="fa-brands fa-github"></i> Code</a>
               <button class="btn btn-glass project-btn" style="pointer-events: none; opacity: 0.7;" disabled><i
                   class="fa-solid fa-clock-rotate-left"></i> Ongoing</button>
@@ -899,9 +1069,9 @@
 
             <div class="project-links">
               <a href="https://github.com/DIVYAHARINA/ACM-CHAPTER-FINAL-SITE.git" target="_blank"
-                class="btn btn-secondary project-btn"><i class="fa-brands fa-github"></i> Code</a>
+                class="btn btn-secondary project-btn" aria-label="View ACM Student Chapter Website source code on GitHub"><i class="fa-brands fa-github"></i> Code</a>
               <a href="https://divyaharina.github.io/ACM-CHAPTER-FINAL-SITE/" target="_blank"
-                class="btn btn-primary project-btn"><i class="fa-solid fa-globe"></i> Live</a>
+                class="btn btn-primary project-btn" aria-label="View ACM Student Chapter live website"><i class="fa-solid fa-globe"></i> Live</a>
             </div>
           </div>
         </div>
@@ -910,7 +1080,63 @@
     </div>
   </section>
 
-  <!-- 10. CERTIFICATIONS SECTION -->
+  <!-- 10. ACHIEVEMENTS SECTION -->
+  <section class="achievements section" id="achievements">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>Key Achievements</h2>
+        <p>Key professional milestones and achievements accomplished during my development work.</p>
+      </div>
+
+      <div class="certifications-grid reveal">
+        <!-- Achievement 1 -->
+        <div class="glass-card cert-card-inner">
+          <div class="cert-icon-box"><i class="fa-solid fa-circle-check"></i></div>
+          <div class="cert-info">
+            <h3>Completed Web Developer Internship</h3>
+            <span class="cert-org">InnoByte Services</span>
+            <span class="cert-date">15th June, 2026 - 15th July, 2026</span>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.4;">Successfully fulfilled all developer intern responsibilities and completed code reviews under professional team guidance.</p>
+          </div>
+        </div>
+
+        <!-- Achievement 2 -->
+        <div class="glass-card cert-card-inner">
+          <div class="cert-icon-box"><i class="fa-solid fa-business-time"></i></div>
+          <div class="cert-info">
+            <h3>Delivered Project Before Deadline</h3>
+            <span class="cert-org">King Sukh Guest House Redesign</span>
+            <span class="cert-date">Submitted within 25 Days</span>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.4;">Completed all design concepts, layout wireframing, frontend development, and device testing inside the 25-day delivery window.</p>
+          </div>
+        </div>
+
+        <!-- Achievement 3 -->
+        <div class="glass-card cert-card-inner">
+          <div class="cert-icon-box"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          <div class="cert-info">
+            <h3>Improved Frontend Development Skills</h3>
+            <span class="cert-org">Hands-on Competencies Gained</span>
+            <span class="cert-date">HTML5, CSS3, JavaScript, Grid & Flexbox</span>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.4;">Acquired expert capabilities in crafting clean semantic code layouts, implementing fluid grid systems, and utilizing CSS animations.</p>
+          </div>
+        </div>
+
+        <!-- Achievement 4 -->
+        <div class="glass-card cert-card-inner">
+          <div class="cert-icon-box"><i class="fa-solid fa-desktop"></i></div>
+          <div class="cert-info">
+            <h3>Worked on Real-World Project</h3>
+            <span class="cert-org">King Sukh Guest House Website</span>
+            <span class="cert-date">Live Redeployed Platform</span>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.4;">Successfully executed a complete website redesign and optimization process to solve real business listing and booking problems.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. CERTIFICATIONS SECTION -->
   <section class="certificates section" id="certificates">
     <div class="container">
       <div class="section-title reveal">
@@ -919,6 +1145,17 @@
       </div>
 
       <div class="certifications-grid reveal">
+        <!-- Internship Certificate -->
+        <div class="glass-card cert-card-inner">
+          <div class="cert-icon-box"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div class="cert-info">
+            <h3>Web Developer Intern Certificate of Completion</h3>
+            <span class="cert-org">InnoByte Services</span>
+            <span class="cert-date">15th July, 2026</span>
+            <a href="assets/certificate.pdf" target="_blank" class="cert-btn"><i class="fa-solid fa-certificate"></i> View Certificate</a>
+          </div>
+        </div>
+
         <!-- Certificate 1 -->
         <div class="glass-card cert-card-inner">
           <div class="cert-icon-box"><i class="fa-brands fa-java"></i></div>
@@ -1221,21 +1458,21 @@
           <form class="contact-form" id="contactForm" novalidate>
             <!-- Name Input -->
             <div class="form-group">
-              <input type="text" id="name" class="form-input" placeholder=" " required>
+              <input type="text" id="name" name="name" class="form-input" placeholder=" " autocomplete="name" aria-required="true" required>
               <label for="name" class="form-label">Full Name</label>
               <span class="input-error-msg" id="nameError">Name must be at least 2 characters.</span>
             </div>
 
             <!-- Email Input -->
             <div class="form-group">
-              <input type="email" id="email" class="form-input" placeholder=" " required>
+              <input type="email" id="email" name="email" class="form-input" placeholder=" " autocomplete="email" aria-required="true" required>
               <label for="email" class="form-label">Email Address</label>
               <span class="input-error-msg" id="emailError">Please provide a valid email structure.</span>
             </div>
 
             <!-- Message Input -->
             <div class="form-group">
-              <textarea id="message" class="form-input form-textarea" placeholder=" " required></textarea>
+              <textarea id="message" name="message" class="form-input form-textarea" placeholder=" " aria-required="true" required></textarea>
               <label for="message" class="form-label">Message Details</label>
               <span class="input-error-msg" id="messageError">Message must contain at least 10 characters.</span>
             </div>

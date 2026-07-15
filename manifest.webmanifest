@@ -1,0 +1,18 @@
+{
+  "name": "Divya R Portfolio",
+  "short_name": "Divya R",
+  "description": "Professional personal portfolio of Divya R, Frontend Developer & IT Engineer.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#090D16",
+  "theme_color": "#4F46E5",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./favicon.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ]
+}

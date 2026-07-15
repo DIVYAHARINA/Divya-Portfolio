@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://divyaharina.github.io/Divya-Portfolio/sitemap.xml
