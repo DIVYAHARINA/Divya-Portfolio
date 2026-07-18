@@ -1434,12 +1434,13 @@ a {
   font-size: 0.9rem;
   color: var(--text-secondary);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.5rem;
 }
 
 .timeline-achievements li i {
   color: var(--success);
+  margin-top: 0.25rem;
 }
 
 .timeline-item:nth-child(odd) .timeline-achievements li {
@@ -1546,6 +1547,171 @@ a {
 }
 
 /* --------------------------------------------------------------------------
+   10.5 SERVICES SECTION
+   -------------------------------------------------------------------------- */
+.services-pricing-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.5rem;
+  margin-bottom: 4rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-glow), var(--glass-shadow);
+  border-radius: var(--radius-md);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+
+.services-pricing-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.pricing-badge {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  background: var(--gradient-primary);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-sm);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.pricing-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.pricing-price {
+  font-size: 4rem;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  letter-spacing: -1px;
+}
+
+.pricing-tagline {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.5px;
+}
+
+.pricing-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+.pricing-action .btn {
+  padding: 1rem 2.5rem;
+  font-size: 1.05rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pricing-footnote {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: 2rem;
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.service-card-inner {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 100%;
+}
+
+.service-card-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--gradient-primary);
+  color: white;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+  transition: var(--transition-bounce);
+}
+
+.service-card-inner:hover .service-card-icon {
+  transform: rotate(10deg) scale(1.1);
+}
+
+.service-card-inner h3 {
+  font-size: 1.35rem;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.service-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.service-list li {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.service-list li i {
+  color: var(--primary);
+  font-size: 1.1rem;
+}
+
+/* --------------------------------------------------------------------------
    11. PREMIUM PROJECTS SECTION
    -------------------------------------------------------------------------- */
 .projects-filter-wrapper {
@@ -1589,7 +1755,7 @@ a {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
   gap: 2rem;
 }
 
@@ -1820,7 +1986,7 @@ a {
    -------------------------------------------------------------------------- */
 .certifications-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
   gap: 1.5rem;
 }
 
@@ -2489,11 +2655,31 @@ a {
   .section-title h2 {
     font-size: 2.2rem;
   }
+
+  .services-pricing-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+    padding: 3rem 2rem 2rem;
+  }
+
+  .pricing-action {
+    align-items: center;
+    width: 100%;
+  }
+
+  .pricing-action .btn {
+    width: 100%;
+  }
 }
 
 @media (max-width: 480px) {
   .container {
-    padding: 0 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .hero-name {
+    font-size: 2rem;
   }
 
   .hero-btns .btn {
@@ -2502,6 +2688,10 @@ a {
 
   .about-quick-facts {
     grid-template-columns: 1fr;
+  }
+
+  .timeline-card {
+    padding: 1.25rem;
   }
 
   .skills-tabs,
@@ -2518,6 +2708,19 @@ a {
 
   .hero-stats {
     grid-template-columns: 1fr;
+  }
+
+  .services-pricing-card {
+    padding: 2.5rem 1rem 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .pricing-price {
+    font-size: 3rem;
+  }
+
+  .service-card-inner {
+    padding: 1.5rem;
   }
 
   .contact-form-card {

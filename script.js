@@ -293,6 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const roleText = document.getElementById('role-text');
   if (roleText) {
     const words = [
+      'Freelance Web Developer',
       'Frontend Developer',
       'React Developer',
       'Web Developer',
