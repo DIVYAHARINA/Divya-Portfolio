@@ -1,23 +1,60 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const html = document.documentElement;
+const loadSectionPages = async () => {
+  const sectionPages = [
+    ['about', 'before'],
+    ['skills', 'before'],
+    ['experience', 'before'],
+    ['projects', 'before'],
+    ['certificates', 'before'],
+    ['services', 'after'],
+    ['contact', 'after']
+  ];
+  const beforeGithub = document.getElementById('sections-before-github');
+  const afterGithub = document.getElementById('sections-after-github');
+  const afterContact = document.getElementById('sections-after-contact');
+  if (!beforeGithub || !afterGithub || !afterContact) return;
+
+  const loadedSections = await Promise.all(sectionPages.map(async ([pageName, position]) => {
+    try {
+      const pageUrl = new URL(`pages/${pageName}.html`, document.baseURI);
+      const response = await fetch(pageUrl);
+      if (!response.ok) throw new Error(`Unable to load ${pageName} section`);
+      const pageDocument = new DOMParser().parseFromString(await response.text(), 'text/html');
+      const section = pageDocument.querySelector(`section#${pageName}`);
+      if (!section) throw new Error(`Missing ${pageName} section`);
+
+      for (const element of [section, ...section.querySelectorAll('[href], [src], [data]')]) {
+        for (const attribute of ['href', 'src', 'data']) {
+          const value = element.getAttribute(attribute);
+          if (!value || value.startsWith('#') || /^[a-z][a-z\d+.-]*:/i.test(value)) continue;
+          const resolved = new URL(value, pageUrl);
+          if (resolved.origin !== location.origin) continue;
+          const targetPage = sectionPages.find(([name]) => resolved.pathname.endsWith(`/pages/${name}.html`));
+          element.setAttribute(attribute, targetPage ? `#${targetPage[0]}` : `${resolved.pathname}${resolved.search}${resolved.hash}`);
+        }
+      }
+
+      return { section, position };
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  }));
+
+  loadedSections.filter(Boolean).forEach(({ section, position }) => {
+    const mount = position === 'before' ? beforeGithub : position === 'after' ? afterGithub : afterContact;
+    mount?.append(section);
+  });
+};
+
+document.addEventListener('DOMContentLoaded', async () => {
+  document.getElementById('preloader')?.classList.add('fade-out');
+  await loadSectionPages();
+
   const header = document.getElementById('header');
-  const themeButton = document.getElementById('themeToggleBtn');
   const menuButton = document.getElementById('menuToggleBtn');
   const navMenu = document.getElementById('navMenu');
   const navWrapper = document.querySelector('.nav-wrapper');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // Theme applies to the complete document and survives refreshes.
-  const setTheme = (theme) => {
-    const value = theme === 'light' ? 'light' : 'dark';
-    html.dataset.theme = value;
-    localStorage.setItem('portfolio-theme', value);
-    const icon = themeButton?.querySelector('i');
-    if (icon) icon.className = value === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
-    themeButton?.setAttribute('aria-label', value === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
-  };
-  setTheme(localStorage.getItem('portfolio-theme') || 'dark');
-  themeButton?.addEventListener('click', () => setTheme(html.dataset.theme === 'dark' ? 'light' : 'dark'));
 
   // Compact sticky header and active section state.
   const sections = [...document.querySelectorAll('section[id]')];
@@ -27,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const current = sections.reduce((active, section) => {
       return window.scrollY >= section.offsetTop - 150 ? section.id : active;
     }, 'home');
-    links.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${current}`));
+    links.forEach(link => { const href = link.getAttribute('href'); const active = href === `#${current}` || (current !== 'home' && new URL(link.href).pathname.endsWith(`/${current}.html`)); link.classList.toggle('active', active); });
     const height = document.documentElement.scrollHeight - window.innerHeight;
     document.documentElement.style.setProperty('--scroll-progress', `${height ? (window.scrollY / height) * 100 : 0}%`);
     document.getElementById('backToTopBtn')?.classList.toggle('visible', window.scrollY > 500);
@@ -39,11 +76,13 @@ document.addEventListener('DOMContentLoaded', () => {
   menuButton?.addEventListener('click', () => {
     const open = !navWrapper?.classList.contains('active');
     navWrapper?.classList.toggle('active', open);
+    navMenu?.classList.toggle('active', open);
     menuButton.classList.toggle('active', open);
     menuButton.setAttribute('aria-expanded', String(open));
   });
   links.forEach(link => link.addEventListener('click', () => {
     navWrapper?.classList.remove('active');
+    navMenu?.classList.remove('active');
     menuButton?.classList.remove('active');
     menuButton?.setAttribute('aria-expanded', 'false');
   }));
@@ -92,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     const render = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const color = html.dataset.theme === 'dark' ? '139,92,246' : '79,70,229';
+      const color = '79,70,229';
       particles.forEach((p, i) => {
         p.x += p.vx; p.y += p.vy;
         if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
@@ -158,6 +197,82 @@ document.addEventListener('DOMContentLoaded', () => {
     trigger.setAttribute('aria-expanded', String(open));
   }));
 
+  const contactForm = document.getElementById('contactForm');
+  const contactFields = [
+    { input: document.getElementById('name'), error: document.getElementById('nameError'), valid: value => value.trim().length >= 2 },
+    { input: document.getElementById('email'), error: document.getElementById('emailError'), valid: value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim()) },
+    { input: document.getElementById('message'), error: document.getElementById('messageError'), valid: value => value.trim().length >= 10 }
+  ];
+  const contactStatus = document.getElementById('formStatusAlert');
+  const contactStatusText = document.getElementById('formStatusText');
+  const submitButton = document.getElementById('submitBtn');
+  const submitButtonText = document.getElementById('submitBtnText');
+  const showContactStatus = (message, type) => {
+    if (!contactStatus || !contactStatusText) return;
+    contactStatusText.textContent = message;
+    contactStatus.classList.remove('alert-success', 'alert-error');
+    contactStatus.classList.add('show', type);
+  };
+
+  contactFields.forEach(({ input, error, valid }) => {
+    input?.addEventListener('input', () => {
+      if (valid(input.value)) {
+        input.classList.remove('input-error');
+        error?.classList.remove('show');
+      }
+      contactStatus?.classList.remove('show');
+    });
+  });
+
+  contactForm?.addEventListener('submit', async event => {
+    event.preventDefault();
+    contactStatus?.classList.remove('show');
+    let formIsValid = true;
+    contactFields.forEach(({ input, error, valid }) => {
+      const isValid = Boolean(input && valid(input.value));
+      input?.classList.toggle('input-error', !isValid);
+      error?.classList.toggle('show', !isValid);
+      formIsValid = formIsValid && isValid;
+    });
+    if (!formIsValid) return;
+
+    if (submitButton) submitButton.disabled = true;
+    if (submitButtonText) submitButtonText.textContent = 'Sending...';
+
+    try {
+      const formData = new FormData(contactForm);
+      if (!formData.has('access_key')) {
+        formData.append('access_key', '32eeba34-52c9-4e48-bf18-6e4bab1b16c8');
+      }
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        showContactStatus("Message sent successfully! I'll get back to you soon.", 'alert-success');
+        contactForm.reset();
+        contactFields.forEach(({ input, error }) => {
+          input?.classList.remove('input-error');
+          error?.classList.remove('show');
+        });
+      } else {
+        showContactStatus('Something went wrong. Please try again.', 'alert-error');
+      }
+    } catch (error) {
+      showContactStatus('Something went wrong. Please try again.', 'alert-error');
+    } finally {
+      if (submitButton) submitButton.disabled = false;
+      if (submitButtonText) submitButtonText.textContent = 'Send Message';
+    }
+  });
+
   const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); if (entry.target.classList.contains('hero-stats')) animateCounters(); observer.unobserve(entry.target); } }), { threshold: .12 });
   document.querySelectorAll('.reveal, .zoom-in, .fade-in').forEach(element => observer.observe(element));
 
@@ -170,5 +285,4 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', event => { if (event.key === 'Escape') closeResume(); });
 
   document.querySelectorAll('.skill-progress-fill').forEach(fill => { fill.style.width = fill.dataset.progress || '0'; });
-  document.getElementById('preloader')?.classList.add('fade-out');
 });

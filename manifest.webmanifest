@@ -4,8 +4,8 @@
   "description": "Professional personal portfolio of Divya R, Frontend Developer & IT Engineer.",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#090D16",
-  "theme_color": "#4F46E5",
+  "background_color": "#F5F8F8",
+  "theme_color": "#0F6B70",
   "orientation": "portrait-primary",
   "icons": [
     {
