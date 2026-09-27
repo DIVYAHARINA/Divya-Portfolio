@@ -1347,6 +1347,10 @@ a {
   min-width: 0;
 }
 
+.timeline-item + .timeline-item {
+  margin-top: 0.5rem;
+}
+
 .timeline-dot {
   position: absolute;
   left: 50%;
@@ -1391,6 +1395,7 @@ a {
   padding: clamp(1.25rem, 2vw, 2rem);
   width: 100%;
   min-width: 0;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
 }
 
 .timeline-header {
@@ -2736,6 +2741,26 @@ a {
 
   .timeline-container {
     padding-top: 1rem;
+  }
+
+  .timeline-item--process {
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+    padding-top: 0.5rem;
+  }
+
+  .timeline-process-panel {
+    grid-column: 1;
+    justify-content: center;
+    padding-right: 0;
+  }
+
+  .timeline-process-card::after {
+    display: none;
+  }
+
+  .timeline-item--process .timeline-content-wrap {
+    grid-column: 1;
   }
 
   .timeline-card {

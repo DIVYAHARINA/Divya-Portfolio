@@ -2,9 +2,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('preloader')?.classList.add('fade-out');
 
   const headerMount = document.getElementById('site-header');
-  if (headerMount) {
+  if (headerMount && !headerMount.querySelector('header')) {
+    const headerUrl = window.location.pathname.includes('/pages/') ? '../pages/header.html' : './pages/header.html';
     try {
-      const response = await fetch('./pages/header.html');
+      const response = await fetch(headerUrl);
       if (response.ok) {
         headerMount.innerHTML = await response.text();
       }
