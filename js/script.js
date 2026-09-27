@@ -1,5 +1,17 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('preloader')?.classList.add('fade-out');
+
+  const headerMount = document.getElementById('site-header');
+  if (headerMount) {
+    try {
+      const response = await fetch('./pages/header.html');
+      if (response.ok) {
+        headerMount.innerHTML = await response.text();
+      }
+    } catch (error) {
+      console.error('Header load failed:', error);
+    }
+  }
 
   const header = document.getElementById('header');
   const menuButton = document.getElementById('menuToggleBtn');
