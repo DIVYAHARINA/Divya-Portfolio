@@ -2,7 +2,7 @@
 
 Welcome to my personal portfolio! This is a clean, responsive, and modern website showcasing my skills, projects, education, and expertise.
 
-**[Live Demo](https://divyaharina.github.io/Divya-Portfolio/)** • **[GitHub](https://github.com/DIVYAHARINA)** • **[LinkedIn](https://www.linkedin.com/in/divya2607/)**
+**[Live Demo](https://divya-portfolio-omega-ten.vercel.app/)** • **[GitHub](https://github.com/DIVYAHARINA)** • **[LinkedIn](https://www.linkedin.com/in/divya2607/)**
 
 ---
 
