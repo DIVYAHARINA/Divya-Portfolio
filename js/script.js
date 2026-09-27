@@ -1,5 +1,59 @@
+<<<<<<< HEAD
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('preloader')?.classList.add('fade-out');
+=======
+const loadSectionPages = async () => {
+  const sectionPages = [
+    ['about', 'before'],
+    ['skills', 'before'],
+    ['experience', 'before'],
+    ['projects', 'before'],
+    ['certificates', 'before'],
+    ['services', 'after'],
+    ['contact', 'after']
+  ];
+  const beforeGithub = document.getElementById('sections-before-github');
+  const afterGithub = document.getElementById('sections-after-github');
+  const afterContact = document.getElementById('sections-after-contact');
+  if (!beforeGithub || !afterGithub || !afterContact) return;
+
+  const loadedSections = await Promise.all(sectionPages.map(async ([pageName, position]) => {
+    try {
+      const pageUrl = new URL(`pages/${pageName}.html`, document.baseURI);
+      const response = await fetch(pageUrl);
+      if (!response.ok) throw new Error(`Unable to load ${pageName} section`);
+      const pageDocument = new DOMParser().parseFromString(await response.text(), 'text/html');
+      const section = pageDocument.querySelector(`section#${pageName}`);
+      if (!section) throw new Error(`Missing ${pageName} section`);
+
+      for (const element of [section, ...section.querySelectorAll('[href], [src], [data]')]) {
+        for (const attribute of ['href', 'src', 'data']) {
+          const value = element.getAttribute(attribute);
+          if (!value || value.startsWith('#') || /^[a-z][a-z\d+.-]*:/i.test(value)) continue;
+          const resolved = new URL(value, pageUrl);
+          if (resolved.origin !== location.origin) continue;
+          const targetPage = sectionPages.find(([name]) => resolved.pathname.endsWith(`/pages/${name}.html`));
+          element.setAttribute(attribute, targetPage ? `#${targetPage[0]}` : `${resolved.pathname}${resolved.search}${resolved.hash}`);
+        }
+      }
+
+      return { section, position };
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  }));
+
+  loadedSections.filter(Boolean).forEach(({ section, position }) => {
+    const mount = position === 'before' ? beforeGithub : position === 'after' ? afterGithub : afterContact;
+    mount?.append(section);
+  });
+};
+
+document.addEventListener('DOMContentLoaded', async () => {
+  document.getElementById('preloader')?.classList.add('fade-out');
+  await loadSectionPages();
+>>>>>>> origin/main
 
   const header = document.getElementById('header');
   const menuButton = document.getElementById('menuToggleBtn');
@@ -224,7 +278,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+<<<<<<< HEAD
   const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); if (entry.target.classList.contains('hero-stats')) animateCounters(); observer.unobserve(entry.target); } }), { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+=======
+  const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); if (entry.target.classList.contains('hero-stats')) animateCounters(); observer.unobserve(entry.target); } }), { threshold: .12 });
+>>>>>>> origin/main
   document.querySelectorAll('.reveal, .zoom-in, .fade-in').forEach(element => observer.observe(element));
 
   document.getElementById('backToTopBtn')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
