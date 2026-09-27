@@ -1339,11 +1339,12 @@ a {
 
 .timeline-item {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   column-gap: 4rem;
   margin-bottom: 3.5rem;
   position: relative;
   align-items: center;
+  min-width: 0;
 }
 
 .timeline-dot {
@@ -1371,6 +1372,7 @@ a {
   position: relative;
   width: 100%;
   box-sizing: border-box;
+  min-width: 0;
 }
 
 /* 1st, 3rd experience (odd of-type) -> RIGHT side */
@@ -1386,26 +1388,36 @@ a {
 }
 
 .timeline-card {
-  padding: 2rem;
+  padding: clamp(1.25rem, 2vw, 2rem);
+  width: 100%;
+  min-width: 0;
 }
 
 .timeline-header {
   margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
 }
 
 .timeline-role {
-  font-size: 1.35rem;
+  font-size: clamp(1.05rem, 1.7vw, 1.35rem);
   font-weight: 800;
   color: var(--text-primary);
+  line-height: 1.4;
+  word-break: break-word;
 }
 
 .timeline-company {
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: clamp(0.9rem, 1.4vw, 1.05rem);
   color: var(--primary);
   margin: 0.25rem 0;
   display: block;
+  line-height: 1.5;
+  word-break: break-word;
 }
 
 .timeline-duration {
@@ -1413,12 +1425,16 @@ a {
   color: var(--text-muted);
   font-weight: 600;
   display: block;
+  line-height: 1.5;
+  word-break: break-word;
 }
 
 .timeline-desc {
   font-size: 0.95rem;
   color: var(--text-secondary);
   margin-bottom: 1.25rem;
+  line-height: 1.7;
+  word-break: break-word;
 }
 
 .timeline-achievements {
@@ -1426,6 +1442,8 @@ a {
   display: inline-flex;
   flex-direction: column;
   gap: 0.6rem;
+  width: 100%;
+  min-width: 0;
 }
 
 .timeline-item:nth-child(odd) .timeline-achievements {
@@ -1442,11 +1460,15 @@ a {
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
+  line-height: 1.6;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .timeline-achievements li i {
   color: var(--success);
   margin-top: 0.25rem;
+  flex-shrink: 0;
 }
 
 .timeline-item:nth-child(odd) .timeline-achievements li {
@@ -1464,6 +1486,8 @@ a {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  line-height: 1.5;
+  word-break: break-word;
 }
 
 .timeline-item:nth-child(odd) .internship-micro-timeline-title {
@@ -1478,6 +1502,7 @@ a {
   padding-left: 1.25rem;
   margin-left: 0.5rem;
   text-align: left;
+  min-width: 0;
 }
 
 .timeline-item:nth-child(odd) .internship-micro-timeline {
@@ -1492,6 +1517,7 @@ a {
 
 .micro-timeline-step {
   position: relative;
+  min-width: 0;
 }
 
 .micro-step-dot {
@@ -1520,17 +1546,24 @@ a {
 .micro-step-content {
   display: flex;
   flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
 }
 
 .micro-step-title {
   font-size: 0.85rem;
   font-weight: 700;
   color: var(--text-primary);
+  line-height: 1.5;
+  word-break: break-word;
 }
 
 .micro-step-desc {
   font-size: 0.75rem;
   color: var(--text-muted);
+  line-height: 1.5;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 @media (max-width: 1024px) {
@@ -1900,6 +1933,7 @@ a {
 
 .project-links {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.75rem;
   margin-top: auto;
   border-top: 1px solid var(--glass-border);
@@ -1907,10 +1941,18 @@ a {
 }
 
 .project-btn {
-  flex: 1;
-  padding: 0.55rem 0.85rem;
+  flex: 1 1 140px;
+  min-width: 110px;
+  padding: 0.7rem 0.9rem;
   font-size: 0.8rem;
   border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1.2;
 }
 
 /* Dynamic Case Study accordion panel style */
@@ -2611,6 +2653,17 @@ a {
   .timeline-item:nth-child(odd) .timeline-achievements li {
     flex-direction: row;
   }
+
+  .timeline-achievements li,
+  .micro-step-title,
+  .micro-step-desc,
+  .timeline-role,
+  .timeline-company,
+  .timeline-duration,
+  .timeline-desc {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
 }
 
 @media (max-width: 768px) {
@@ -2679,6 +2732,29 @@ a {
 
   .section-title h2 {
     font-size: 2.2rem;
+  }
+
+  .timeline-container {
+    padding-top: 1rem;
+  }
+
+  .timeline-card {
+    padding: 1.25rem;
+  }
+
+  .timeline-header,
+  .timeline-achievements,
+  .internship-micro-timeline,
+  .micro-step-content {
+    width: 100%;
+  }
+
+  .timeline-achievements li {
+    font-size: 0.82rem;
+  }
+
+  .internship-micro-timeline-title {
+    font-size: 0.85rem;
   }
 
   .contact-left {
@@ -4183,6 +4259,14 @@ html[data-theme='dark'] .header.sticky {
 
   .project-links {
     flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .project-btn {
+    width: 100%;
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 0.8rem 1rem;
   }
 }
 
