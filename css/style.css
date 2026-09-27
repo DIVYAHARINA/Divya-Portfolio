@@ -111,11 +111,7 @@ body {
 }
 
 .menu-toggle {
-<<<<<<< HEAD
   display: none;
-=======
-  display: inline-grid;
->>>>>>> origin/main
   place-items: center;
   flex: 0 0 auto;
 }
